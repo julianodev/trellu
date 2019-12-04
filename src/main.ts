@@ -9,6 +9,7 @@ Vue.config.productionTip = false;
 
 
 Vue.component('app-header', () => import('@/components/shared/header/Header.vue'));
+Vue.component('app-navbar', () => import('@/components/shared/navbar/Navbar.vue'));
 Vue.component('app-card', () => import('@/components/card/Card.vue'));
 Vue.component('app-list', () => import('@/components/list/List.vue'));
 Vue.component('app-board', () => import('@/components/board/Board.vue'));

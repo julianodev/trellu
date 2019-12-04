@@ -1,5 +1,5 @@
 <template>
-  <div class="btn-container">
+  <div class="btn-container" @click="click" v-ripple>
     <app-icon :name="name" :color="color" />
   </div>
 </template>
@@ -18,6 +18,11 @@ import { Vue, Component, Prop } from "vue-property-decorator";
       type: String,
       default: () => ""
     }
+  },
+  methods: {
+    click(event: Event) {
+      this.$emit("click", event);
+    }
   }
 })
 export default class ButtonIcon extends Vue {}
@@ -31,5 +36,9 @@ export default class ButtonIcon extends Vue {}
   background: #4d95be;
   border-radius: 6px;
   text-align: center;
+}
+
+.btn-container:hover {
+  background: #0079bf;
 }
 </style>

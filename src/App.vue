@@ -12,9 +12,3 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 })
 export default class App extends Vue {}
 </script>
-
-<style lang="css">
-.v-content {
-  background: #0079bf;
-}
-</style>
