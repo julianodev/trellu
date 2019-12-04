@@ -3,7 +3,7 @@
     <v-toolbar-title
       class="ml-2 mt-1"
       style="font-size:18px;font-weight:700;line-height:32px;color:#fff"
-    >Broker Admin - Backlog</v-toolbar-title>
+    >{{title}}</v-toolbar-title>
 
     <div style="display:flex;">
       <div
@@ -20,7 +20,7 @@
         class="ml-3 mt-1"
         style="height:30px;width:auto;background:#4D95BE;border-radius:6px;text-align:center;margin-right:5px;color:#fff;padding:5px;align-items:center;display:flex;"
       >
-        <span class="body-2" style="color:#fff;">Broker</span>
+        <span class="body-2" style="color:#fff;">LJ Company</span>
 
         <v-chip
           class="ml-2 mt-0 overline"
