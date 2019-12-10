@@ -34,6 +34,36 @@
 
           <v-col :key="n" class="pa-1">
             <v-card color="#0067A3" dark>
+              <v-card-title class="headline">Pessoal</v-card-title>
+
+              <v-card-actions>
+                <v-btn text @click="aoClicarVisualizar('pessoal')">VISUALIZAR</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+
+          <v-col :key="n" class="pa-1">
+            <v-card color="#0067A3" dark>
+              <v-card-title class="headline">Pessoal</v-card-title>
+
+              <v-card-actions>
+                <v-btn text @click="aoClicarVisualizar('pessoal')">VISUALIZAR</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+
+          <v-col :key="n" class="pa-1">
+            <v-card color="#0067A3" dark>
+              <v-card-title class="headline">Pessoal</v-card-title>
+
+              <v-card-actions>
+                <v-btn text @click="aoClicarVisualizar('pessoal')">VISUALIZAR</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+
+          <v-col :key="n" class="pa-1">
+            <v-card color="#0067A3" dark>
               <v-card-title class="headline">TODO</v-card-title>
 
               <v-card-actions>

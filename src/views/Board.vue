@@ -1,10 +1,5 @@
 <template>
-  <v-content class="board-container">
-    <app-header>
-      <app-navbar :title="title" />
-    </app-header>
-    <app-board />
-  </v-content>
+  <app-board />
 </template>
 
 
@@ -24,7 +19,4 @@ export default class Board extends Vue {}
 
 
 <style scoped>
-.board-container {
-  background: #0079bf;
-}
 </style>
