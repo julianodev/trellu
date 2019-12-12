@@ -1,19 +1,17 @@
 <template>
   <div>
-    <div class="modal" :class="isOpen()">
+    <div class="modal fade" :class="classes">
       <div class="modal-background"></div>
       <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Modal title</p>
+        <header class="modal-card-head modal-body">
+          <p class="modal-card-title">
+            <slot name="header"></slot>
+          </p>
           <button class="delete" aria-label="close"></button>
         </header>
-        <section class="modal-card-body">
-          <!-- Content ... -->
+        <section class="modal-card-body modal-body">
+          <slot name="body"></slot>
         </section>
-        <footer class="modal-card-foot">
-          <button class="button is-success" @click="open = !open">Save changes</button>
-          <button class="button" @click="open = !open">Cancel</button>
-        </footer>
       </div>
     </div>
   </div>
@@ -22,8 +20,7 @@
 <script>
 export default {
   props: {
-    title: "",
-    listId: [String, Number],
+    toggle: Boolean,
     placeholder: String,
     icon: {
       type: String,
@@ -36,16 +33,34 @@ export default {
       open: false
     };
   },
-  methods: {
-    isOpen() {
+  watch: {
+    toggle(val, old) {
+      if (!val) {
+        this.$emit("close");
+      }
+      // console.log("val", val, this.item);
+    }
+  },
+  methods: {},
+  computed: {
+    classes() {
       return {
-        "is-active": !this.open,
-        "": this.open
+        "is-active": this.toggle
       };
     }
-  }
+  },
+  destroyed() {}
 };
 </script>
 
 <style lang="scss">
+$bg-modal: #f5f5f5;
+
+.modal-body {
+  background: $bg-modal;
+}
+
+.modal-card-head {
+  border-bottom: $bg-modal;
+}
 </style>

@@ -174,7 +174,11 @@
                 @drop="e => onCardDrop(e, list, listIndex)"
               >
                 <Draggable v-for="item in list.items" :key="item.id">
-                  <Card :item="item" @edit="editItem" />
+                  <Card
+                    :item="item"
+                    :list="{'title':list.title,'id':list.id}"
+                    style="cursor:pointer"
+                  />
                 </Draggable>
               </Container>
 
@@ -203,8 +207,6 @@
         </p>
       </div>
     </footer>-->
-
-    <app-dialog />
   </div>
 </template>
 
@@ -231,7 +233,6 @@ import Card from "./Card.vue";
     Card
   },
   data: () => ({
-    // lists: [],
     activeListId: null,
     modal: false
   }),
@@ -242,6 +243,9 @@ import Card from "./Card.vue";
     }
   },
   methods: {
+    onClickCard(item: any) {
+      console.log("card-item", item);
+    },
     onAddList({ text }: any) {
       const vm = this as any;
       vm.$store.commit("addList", { title: text || "" });

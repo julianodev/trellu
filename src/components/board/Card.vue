@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :class="classes" :data-id="item.id">
+  <div class="card" :class="classes" :data-id="item.id" @click="dialog = !dialog">
     <div class="icons">
       <span
         v-if="isDue"
@@ -19,15 +19,33 @@
       <p class="item-title">{{ item.title }}</p>
       <p class="item-description" v-if="item.description">{{ item.description }}</p>
     </div>
+
+    <app-dialog :toggle="dialog">
+      <template v-slot:header>
+        <div>
+          <label>{{item.title}}</label>
+        </div>
+      </template>
+      <template v-slot:body>
+        <div>
+          <small>na lista: {{list.title}}</small>
+          <!-- Content ... -->
+          <p>Description : {{item.id}}</p>
+        </div>
+      </template>
+    </app-dialog>
   </div>
 </template>
 
 <script>
 export default {
+  data: () => ({
+    dialog: false
+  }),
   props: {
-    item: Object
+    item: Object,
+    list: Object
   },
-
   computed: {
     classes() {
       return {
@@ -35,7 +53,6 @@ export default {
         "is-overdue": this.isOverdue
       };
     },
-
     timestamp() {
       return Number(new Date(this.item.date));
     },
@@ -51,10 +68,12 @@ export default {
       return date > now && now > due;
     }
   },
-
   methods: {
     edit() {
       this.$emit("edit", this.item);
+    },
+    click() {
+      this.$emit("click", this.item);
     }
   }
 };
