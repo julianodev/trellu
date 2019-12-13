@@ -192,11 +192,10 @@
               </div>
             </section>
           </Draggable>
+          <div class="new-list">
+            <ui-item-entry placeholder="Adicionar outra lista" @enter="onAddList" />
+          </div>
         </Container>
-
-        <div class="new-list">
-          <ui-item-entry placeholder="Adicionar outra lista" @enter="onAddList" />
-        </div>
       </div>
     </div>
     <!-- <footer class="pb-2 bg-trellu" style="padding-bottom:10px">
