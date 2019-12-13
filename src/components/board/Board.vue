@@ -215,7 +215,7 @@ import { Container, Draggable } from "vue-smooth-dnd";
 import { makeDropHandler } from "@/utils/plugins";
 import UiItemForm from "@/components/shared/UiItemForm.vue";
 import UiItemEntry from "@/components/shared/UiItemEntry.vue";
-import Card from "./Card.vue";
+import Card from "@/components/card/Card.vue";
 
 @Component<any>({
   props: {
