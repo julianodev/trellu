@@ -1,43 +1,81 @@
 <template>
   <div>
-    <v-toolbar flat color="#0067A3" height="40">
-      <app-button-icon name="home-outline" color="#fff" @click="onClickHome" />
+    <div class="navbar-menu" style="background:#0067A3">
+      <div class="navbar-start">
+        <!-- navbar items -->
+        <button
+          class="button is-small"
+          style="margin:5px;background:#4D95BE;color:#fff;border-color:#4D95BE"
+        >
+          <span class="icon is-small">
+            <i class="fas fa-home"></i>
+          </span>
+        </button>
 
-      <div
-        class="ml-2"
-        style="display:inline-flex;background:#4D95BE;border-radius:6px;height:30px;width:110px;justify-content:center"
-      >
-        <v-icon color="#fff">mdi-view-dashboard</v-icon>
-        <div style="color:#fff;font-weight:bold;margin-top:5px;margin-left:10px">Quadros</div>
+        <button
+          class="button is-small"
+          style="margin:5px;margin-left:1px;background:#4D95BE;color:#fff;border-color:#4D95BE"
+        >
+          <span class="icon is-small">
+            <i class="fab fa-trello"></i>
+          </span>
+          <span>Quadros</span>
+        </button>
+        <div class="field" style="margin:5px;margin-left:1px;">
+          <p class="control has-icons-right">
+            <input
+              class="input is-small"
+              type="text"
+              style="background:#4D95BE;color:#fff;border-color:#4D95BE"
+            />
+            <span class="icon is-small is-right">
+              <i class="fas fa-search"></i>
+            </span>
+          </p>
+        </div>
       </div>
 
-      <div>
-        <input
-          style="background:#4D95BE;height:30px;border-radius:6px;margin-left:10px"
-          type="text"
-        />
+      <div class="navbar-center">
+        <img src="@/assets/logo-trello.png" />
       </div>
 
-      <v-spacer></v-spacer>
-      <img
-        height="50"
-        src="https://www.freshbooks.com/wp-content/uploads/2018/03/Gwen_logo-trello.png"
-        alt
-      />
-      <v-spacer></v-spacer>
+      <div class="navbar-end">
+        <button
+          class="button is-small"
+          style="margin-right:3px;margin-bottom:5px;margin-top:5px;background:#4D95BE;color:#fff;border-color:#4D95BE;"
+        >
+          <span class="icon is-small">
+            <i class="fas fa-plus"></i>
+          </span>
+        </button>
 
-      <app-button-icon name="plus" color="#fff" class="mr-1" />
-      <app-button-icon name="alert-circle-outline" color="#fff" class="mr-1" />
-      <app-button-icon name="bell-outline" color="#fff" class="mr-1" />
+        <button
+          class="button is-small"
+          style="margin-right:3px;margin-bottom:5px;margin-top:5px;background:#4D95BE;color:#fff;border-color:#4D95BE;"
+        >
+          <span class="icon is-small">
+            <i class="fas fa-exclamation-circle"></i>
+          </span>
+        </button>
 
-      <v-avatar color="#4D95BE" size="30">
-        <img
-          src="https://trello-avatars.s3.amazonaws.com/56d80c98213de6cf5319b5ce3037880d/50.png"
-          alt="Lucas Juliano"
-        />
-        <!-- <span class="white--text subtitle-1">LJ</span> -->
-      </v-avatar>
-    </v-toolbar>
+        <button
+          class="button is-small"
+          style="margin-right:3px;margin-bottom:5px;margin-top:5px;background:#4D95BE;color:#fff;border-color:#4D95BE;"
+        >
+          <span class="icon is-small">
+            <i class="far fa-bell"></i>
+          </span>
+        </button>
+
+        <figure class="image is-32x32" style="margin-top:5px;margin-right:5px">
+          <img
+            class="is-rounded"
+            src="https://trello-avatars.s3.amazonaws.com/56d80c98213de6cf5319b5ce3037880d/30.png"
+          />
+        </figure>
+      </div>
+    </div>
+
     <slot></slot>
   </div>
 </template>

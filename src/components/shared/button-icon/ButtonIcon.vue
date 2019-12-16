@@ -1,6 +1,11 @@
 <template>
-  <div class="btn-container" @click="click" v-ripple>
-    <app-icon :name="name" :color="color" />
+  <div>
+    <button class="button is-small btn-container" @click="click">
+      <span class="icon" :class="size" v-if="icon">
+        <i :class="icon"></i>
+      </span>
+      <span v-if="label">{{label}}</span>
+    </button>
   </div>
 </template>
 
@@ -10,13 +15,21 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 @Component({
   name: "ButtonIcon",
   props: {
-    name: {
+    label: {
       type: String,
       default: () => ""
     },
     color: {
       type: String,
       default: () => ""
+    },
+    icon: {
+      type: String,
+      default: () => ""
+    },
+    size: {
+      type: String,
+      default: () => "is-small"
     }
   },
   methods: {
@@ -29,16 +42,28 @@ export default class ButtonIcon extends Vue {}
 </script>
 
 
-<style lang="css">
+<style lang="scss">
+$bg-btn: #0079bf !important;
+$border-btn: #4d95be !important ;
+$color-btn: #fff !important;
+
 .btn-container {
-  height: 30px;
-  width: 30px;
+  margin: 5px;
+  margin-left: 1px;
   background: #4d95be;
-  border-radius: 6px;
-  text-align: center;
+  color: #fff;
+  border-color: #4d95be;
 }
 
 .btn-container:hover {
-  background: #0079bf;
+  background: $bg-btn;
+  border-color: $border-btn;
+  color: $color-btn;
+}
+
+.btn-container:focus {
+  background: #4d95be;
+  border-color: #4d95be;
+  color: $color-btn;
 }
 </style>

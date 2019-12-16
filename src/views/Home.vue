@@ -1,9 +1,12 @@
 <template>
-  <div class="container">
-    <div class="notification">
-      This container is
-      <strong>centered</strong> on desktop.
-    </div>
+  <div>
+    <section class="hero is-link is-fullheight-with-navbar">
+      <div class="hero-body">
+        <div class="container">
+          <a class="title" href="board/demo/1">Clique aqui para visualizar o seu quadro</a>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
