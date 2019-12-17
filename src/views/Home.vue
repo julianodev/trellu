@@ -3,7 +3,7 @@
     <section class="hero is-link is-fullheight-with-navbar">
       <div class="hero-body">
         <div class="container">
-          <a class="title" href="board/demo/1">Clique aqui para visualizar o seu quadro</a>
+          <a class="title" @click="aoClicarVisualizar">Clique aqui para visualizar o seu quadro</a>
         </div>
       </div>
     </section>
@@ -12,6 +12,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+const uuidv1 = require("uuid/v1");
 
 @Component({
   name: "home",
@@ -20,8 +21,9 @@ import { Vue, Component, Prop } from "vue-property-decorator";
     items: [{ text: "Quadros", icon: "mdi-account" }]
   }),
   methods: {
-    aoClicarVisualizar(text: string) {
-      const id: number = Math.floor(Math.random() * 100) + 1;
+    aoClicarVisualizar() {
+      const id = uuidv1();
+      const text: string = "my";
       this.$router.push(`/board/${id}/${text}`);
     }
   }

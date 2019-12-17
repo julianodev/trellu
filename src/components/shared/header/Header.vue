@@ -3,24 +3,10 @@
     <div class="navbar-menu" style="background:#0067A3">
       <div class="navbar-start">
         <!-- navbar items -->
-        <button
-          class="button is-small"
-          style="margin:5px;background:#4D95BE;color:#fff;border-color:#4D95BE"
-        >
-          <span class="icon is-small">
-            <i class="fas fa-home"></i>
-          </span>
-        </button>
 
-        <button
-          class="button is-small"
-          style="margin:5px;margin-left:1px;background:#4D95BE;color:#fff;border-color:#4D95BE"
-        >
-          <span class="icon is-small">
-            <i class="fab fa-trello"></i>
-          </span>
-          <span>Quadros</span>
-        </button>
+        <app-button-icon icon="fas fa-home" style="margin-left:5px" @click="homePage" />
+        <app-button-icon icon="fab fa-trello" label="Quadros" />
+
         <div class="field" style="margin:5px;margin-left:1px;">
           <p class="control has-icons-right">
             <input
@@ -40,32 +26,9 @@
       </div>
 
       <div class="navbar-end">
-        <button
-          class="button is-small"
-          style="margin-right:3px;margin-bottom:5px;margin-top:5px;background:#4D95BE;color:#fff;border-color:#4D95BE;"
-        >
-          <span class="icon is-small">
-            <i class="fas fa-plus"></i>
-          </span>
-        </button>
-
-        <button
-          class="button is-small"
-          style="margin-right:3px;margin-bottom:5px;margin-top:5px;background:#4D95BE;color:#fff;border-color:#4D95BE;"
-        >
-          <span class="icon is-small">
-            <i class="fas fa-exclamation-circle"></i>
-          </span>
-        </button>
-
-        <button
-          class="button is-small"
-          style="margin-right:3px;margin-bottom:5px;margin-top:5px;background:#4D95BE;color:#fff;border-color:#4D95BE;"
-        >
-          <span class="icon is-small">
-            <i class="far fa-bell"></i>
-          </span>
-        </button>
+        <app-button-icon icon="fas fa-plus" />
+        <app-button-icon icon="fas fa-exclamation-circle" />
+        <app-button-icon icon="far fa-bell" />
 
         <figure class="image is-32x32" style="margin-top:5px;margin-right:5px">
           <img
@@ -92,7 +55,7 @@ import { Vue, Component, Prop } from "vue-property-decorator";
     }
   },
   methods: {
-    onClickHome(): void {
+    homePage(): void {
       this.$router.push("/");
     }
   }
