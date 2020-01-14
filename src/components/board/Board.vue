@@ -25,7 +25,6 @@ import userService from "@/service/user/user.service";
     async getUserAsync(username: string) {
       const user = await userService.getUserAsync(username);
       this.user = user;
-      console.log(user);
     }
   },
   async mounted() {
