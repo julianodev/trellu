@@ -1,7 +1,7 @@
 <template>
   <div class="board">
     <app-header>
-      <app-navbar :title="title " />
+      <app-navbar />
     </app-header>
 
     <div class="board">
@@ -12,6 +12,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import userService from "@/service/user/user.service";
 
 @Component<any>({
   props: {},
@@ -19,7 +20,22 @@ import { Vue, Component, Prop } from "vue-property-decorator";
   data: () => ({
     title: "Lucas Juliano Company"
   }),
-  computed: {}
+  computed: {},
+  methods: {
+    async getUserAsync(username: string) {
+      const user = await userService.getUserAsync(username);
+      this.user = user;
+      console.log(user);
+    }
+  },
+  async mounted() {
+    if (!userService.hasUser) {
+      const username = prompt("Por favor, informe o seu usuário do github", "");
+      if (username != null) {
+        await this.getUserAsync(username);
+      }
+    }
+  }
 })
 export default class Board extends Vue {}
 </script>

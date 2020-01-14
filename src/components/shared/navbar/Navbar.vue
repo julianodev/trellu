@@ -17,7 +17,7 @@
         <figure class="image is-32x32" style="margin-top:5px;margin-right:5px">
           <img
             class="is-rounded"
-            src="https://trello-avatars.s3.amazonaws.com/56d80c98213de6cf5319b5ce3037880d/30.png"
+            :src="avatar"
           />
         </figure>
 
@@ -35,13 +35,17 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import userService from '@/service/user/user.service';
 
 @Component({
   name: "Navbar",
-  props: {
-    title: {
-      type: String,
-      default: () => ""
+  props: {},
+  computed: {
+    title(): string {
+      return userService.name;
+    },
+    avatar(){
+      return userService.avatar;
     }
   },
   methods: {
