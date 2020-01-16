@@ -1,5 +1,6 @@
 import { makeItem, makeList } from '../utils/data';
 import { getItemById, getListById, getListByItemId } from '../utils/board'
+import { REMOVE_ITEM, MOVE_ITEM, UPDATE_ITEM, ADD_ITEM, MOVE_LIST, ADD_LIST, RESET_BOARD } from './action-types';
 
 export function state() {
     return {
@@ -22,40 +23,36 @@ const getters = {
 }
 
 export const mutations = {
-    lists(state: any, value: any) {
-        state.lists = value
-    },
-
-    reset(state: any) {
+    [RESET_BOARD](state: any) {
         state.lists = []
     },
 
-    addList(state: any, { title }: any) {
+    [ADD_LIST](state: any, { title }: any) {
         state.lists.push(makeList(title))
     },
 
-    moveList(state: any, [fromIndex, toIndex]: any) {
+    [MOVE_LIST](state: any, [fromIndex, toIndex]: any) {
         state.lists.splice(toIndex, 0, state.lists.splice(fromIndex, 1)[0])
     },
 
-    removeList(state: any, { listId }: any) {
+    [REMOVE_ITEM](state: any, { listId }: any) {
         const index = state.lists.findIndex((list: any) => list.id === listId)
         state.lists.splice(index, 1)
     },
 
-    addItem(state: any, { listId, title, description, date }: any) {
+    [ADD_ITEM](state: any, { listId, title, description, date }: any) {
         const list = getListById(state.lists, listId)
         list.items.push(makeItem(title, description, date))
     },
 
-    updateItem(state: any, { itemId, title, description, date }: any) {
+    [UPDATE_ITEM](state: any, { itemId, title, description, date }: any) {
         const item = getItemById(state.lists, itemId)
         if (item) {
             Object.assign(item, makeItem(title, description, date, itemId))
         }
     },
 
-    moveItem(state: any, [fromListRef, fromIndex, toListRef, toIndex]: any) {
+    [MOVE_ITEM](state: any, [fromListRef, fromIndex, toListRef, toIndex]: any) {
         const fromList = typeof fromListRef === 'number'
             ? state.lists[fromListRef].items
             : getListById(state.lists, fromListRef)
@@ -65,7 +62,7 @@ export const mutations = {
         toList.splice(toIndex, 0, fromList.splice(fromIndex, 1)[0])
     },
 
-    removeItem(state: any, { itemId }: any) {
+    [REMOVE_ITEM](state: any, { itemId }: any) {
         const list = getListByItemId(state.lists, itemId)
         list.items.splice(list.items.findIndex((item: any) => item.id === itemId), 1)
     }

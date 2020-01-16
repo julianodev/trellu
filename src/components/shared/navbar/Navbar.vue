@@ -36,6 +36,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import userService from '@/service/user/user.service';
+import { RESET_BOARD } from '../../../store/action-types';
 
 @Component({
   name: "Navbar",
@@ -51,7 +52,7 @@ import userService from '@/service/user/user.service';
   methods: {
     reset() {
       if (confirm("Deseja mesmo resetar esse quadro?")) {
-        this.$store.commit("reset");
+        this.$store.commit(RESET_BOARD);
       }
     }
   }

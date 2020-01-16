@@ -48,6 +48,7 @@ import { Container, Draggable } from "vue-smooth-dnd";
 import { makeDropHandler } from "@/utils/plugins";
 import Card from "@/components/card/Card.vue";
 import AddList from "./add-list/AddList.vue";
+import { ADD_LIST, UPDATE_ITEM, ADD_ITEM, MOVE_LIST, MOVE_ITEM } from '../../store/action-types';
 
 @Component<any>({
   name: "List",
@@ -77,7 +78,7 @@ import AddList from "./add-list/AddList.vue";
   methods: {
     onAddList({ text }: any) {
       const vm = this as any;
-      vm.$store.commit("addList", { title: text || "" });
+      vm.$store.commit(ADD_LIST, { title: text || "" });
       // vm.$nextTick(() => {
       //   const lists = vm.$refs.list as any;
       //   lists[lists.length - 1].querySelector("input").focus();
@@ -91,14 +92,14 @@ import AddList from "./add-list/AddList.vue";
     onAddFullItem(item: any) {
       const vm = this as any;
       item.id
-        ? vm.$store.commit("updateItem", { itemId: item.id, ...item })
+        ? vm.$store.commit(UPDATE_ITEM, { itemId: item.id, ...item })
         : vm.addItem(vm.activeListId, item.title, item.description, item.date);
       vm.hideModal();
     },
 
     addItem(listId: any, title: any, description: any, date: any) {
       const vm = this as any;
-      vm.$store.commit("addItem", { listId, title, description, date });
+      vm.$store.commit(ADD_ITEM, { listId, title, description, date });
     },
     editItem(item: any) {
       const vm = this as any;
@@ -107,14 +108,12 @@ import AddList from "./add-list/AddList.vue";
     onListDrop: makeDropHandler("onListDropComplete"),
     onListDropComplete: function(src: any, trg: any) {
       const vm = this as any;
-      vm.$store.commit("moveList", [src.index, trg.index]);
+      vm.$store.commit(MOVE_LIST, [src.index, trg.index]);
     },
-
     onCardDrop: makeDropHandler("onCardDropComplete"),
-
     onCardDropComplete(src: any, trg: any, element: any, payload: any) {
       const vm = this as any;
-      vm.$store.commit("moveItem", [
+      vm.$store.commit(MOVE_ITEM, [
         src.params[1],
         src.index,
         trg.params[1],

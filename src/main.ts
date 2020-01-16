@@ -3,12 +3,9 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import './registerServiceWorker';
-import vuetify from './plugins/vuetify';
 import 'bulma/css/bulma.css'
-import '@/core/ui';
 
 Vue.config.productionTip = false;
-
 
 Vue.component('app-header', () => import('@/components/shared/header/Header.vue'));
 Vue.component('app-navbar', () => import('@/components/shared/navbar/Navbar.vue'));
@@ -20,10 +17,8 @@ Vue.component('app-button-icon', () => import('@/components/shared/button-icon/B
 Vue.component('app-dialog', () => import('@/components/shared/dialog/Dialog.vue'));
 
 
-
 new Vue({
   router,
   store,
-  // vuetify,
   render: (h) => h(App)
 }).$mount('#app');
