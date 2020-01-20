@@ -45,10 +45,16 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { Container, Draggable } from "vue-smooth-dnd";
-import { makeDropHandler } from "@/utils/plugins";
+import { makeDropHandler } from "@/core/utils/plugins";
 import Card from "@/components/card/Card.vue";
 import AddList from "./add-list/AddList.vue";
-import { ADD_LIST, UPDATE_ITEM, ADD_ITEM, MOVE_LIST, MOVE_ITEM } from '../../store/action-types';
+import {
+  ADD_LIST,
+  UPDATE_ITEM,
+  ADD_ITEM,
+  MOVE_LIST,
+  MOVE_ITEM
+} from "../../store/action-types";
 
 @Component<any>({
   name: "List",

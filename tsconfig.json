@@ -35,7 +35,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx",
-    "src/utils/plugins.js",
+    "src/core/utils/plugins.js",
     "src/store/board.ts"
   ],
   "exclude": [

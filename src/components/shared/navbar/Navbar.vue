@@ -35,7 +35,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import userService from '@/service/user/user.service';
+import userService from "@/core/service/user.service";
 import { RESET_BOARD } from '../../../store/action-types';
 
 @Component({

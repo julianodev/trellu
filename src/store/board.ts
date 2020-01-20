@@ -1,5 +1,5 @@
-import { makeItem, makeList } from '../utils/data';
-import { getItemById, getListById, getListByItemId } from '../utils/board'
+import { makeItem, makeList } from '../core/utils/data';
+import { getItemById, getListById, getListByItemId } from '../core/utils/board'
 import { REMOVE_ITEM, MOVE_ITEM, UPDATE_ITEM, ADD_ITEM, MOVE_LIST, ADD_LIST, RESET_BOARD } from './action-types';
 
 export function state() {
