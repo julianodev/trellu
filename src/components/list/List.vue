@@ -23,6 +23,8 @@
             <Draggable v-for="item in list.items" :key="item.id">
               <Card :item="item" :list="{'title':list.title,'id':list.id}" style="cursor:pointer" />
             </Draggable>
+
+            <p class="empty-card" v-if="list.items == 0">A lista ainda não possui nenhum cartão :(</p>
           </Container>
 
           <div class="footer-container-list">
@@ -273,5 +275,10 @@ $column-width: 320px;
   border-radius: 10px !important;
   // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #66a4c7 !important;
+}
+
+.empty-card {
+  color: #67748a;
+  text-align: center;
 }
 </style>

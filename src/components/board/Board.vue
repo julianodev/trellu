@@ -1,12 +1,10 @@
 <template>
-  <div class="board">
+  <div>
     <app-header>
       <app-navbar />
     </app-header>
 
-    <div class="board">
-      <app-list />
-    </div>
+    <app-list />
   </div>
 </template>
 
@@ -24,7 +22,4 @@ export default class Board extends Vue {}
 </script>
 
 <style >
-.board {
-  min-height: 100%;
-}
 </style>
