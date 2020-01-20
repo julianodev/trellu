@@ -10,12 +10,26 @@ import userService from "@/core/service/user.service";
 
 @Component({
   name: "App",
+  data: () => ({
+    title: "Por favor, informe o seu usuário do github"
+  }),
+  methods: {
+    redirect(): void {
+      this.$router.go(0);
+    }
+  },
   async created() {
+    const vm = this as any;
+
     if (!userService.hasUser) {
-      const username = prompt("Por favor, informe o seu usuário do github", "");
-      if (username != null) {
-        await userService.getUserAsync(username);
-        this.$router.go(0);
+      try {
+        const username = prompt(vm.title);
+        if (username != null) {
+          await userService.getUserAsync(username);
+          vm.redirect();
+        }
+      } catch (exception) {
+        vm.redirect();
       }
     }
   }
