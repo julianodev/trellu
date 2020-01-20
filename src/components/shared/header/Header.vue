@@ -4,7 +4,7 @@
       <div class="navbar-start">
         <!-- navbar items -->
 
-        <app-button-icon icon="fas fa-home" style="margin-left:5px" @click="homePage" />
+        <app-button-icon icon="fas fa-home" style="margin-left:5px"  />
         <app-button-icon icon="fab fa-trello" label="Quadros" />
 
         <div class="field" style="margin:5px;margin-left:1px;">
@@ -55,9 +55,7 @@ import userService from "@/service/user/user.service";
     }
   },
   methods: {
-    homePage(): void {
-      this.$router.push("/");
-    }
+    
   }
 })
 export default class Header extends Vue {}

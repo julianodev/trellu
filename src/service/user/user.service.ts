@@ -22,9 +22,9 @@ class UserService {
     private baseResource: string = `https://api.github.com/`;
 
     constructor() {
-        if (this.hasUser) {
-            this.user = JSON.parse(localStorage.getItem('user') as string);
-        }
+       if(!this.hasUser){
+           this.user = JSON.parse(localStorage.getItem("user") as string);
+       }
     }
 
     getUserAsync(username: string) {

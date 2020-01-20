@@ -6,9 +6,19 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import userService from "@/service/user/user.service";
 
 @Component({
-  name: "App"
+  name: "App",
+  async created() {
+    if (!userService.hasUser) {
+      const username = prompt("Por favor, informe o seu usuário do github", "");
+      if (username != null) {
+        await userService.getUserAsync(username);
+        this.$router.go(0);
+      }
+    }
+  }
 })
 export default class App extends Vue {}
 </script>
