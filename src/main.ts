@@ -12,7 +12,6 @@ Vue.component('app-navbar', () => import('@/components/shared/navbar/Navbar.vue'
 Vue.component('app-card', () => import('@/components/card/Card.vue'));
 Vue.component('app-list', () => import('@/components/list/List.vue'));
 Vue.component('app-board', () => import('@/components/board/Board.vue'));
-Vue.component('app-icon', () => import('@/components/shared/icon/Icon.vue'));
 Vue.component('app-button-icon', () => import('@/components/shared/button-icon/ButtonIcon.vue'));
 Vue.component('app-dialog', () => import('@/components/shared/dialog/Dialog.vue'));
 
