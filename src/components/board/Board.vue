@@ -1,10 +1,12 @@
 <template>
   <div>
+
     <app-header>
       <app-navbar />
     </app-header>
 
     <app-list />
+    
   </div>
 </template>
 

@@ -4,7 +4,7 @@
       <div class="navbar-start">
         <!-- navbar items -->
 
-        <app-button-icon icon="fas fa-home" style="margin-left:5px"  />
+        <app-button-icon icon="fas fa-home" style="margin-left:5px" />
         <app-button-icon icon="fab fa-trello" label="Quadros" />
 
         <div class="field" style="margin:5px;margin-left:1px;">
@@ -30,11 +30,13 @@
         <app-button-icon icon="fas fa-exclamation-circle" />
         <app-button-icon icon="far fa-bell" />
 
-        <figure class="image is-32x32" style="margin-top:5px;margin-right:5px">
-          <img
-            class="is-rounded"
-            :src="avatar"
-          />
+        <figure
+          class="image is-32x32"
+          style="margin-top:5px;margin-right:5px"
+          @click="logout"
+          title="clique aqui para trocar de perfil no github"
+        >
+          <img class="is-rounded" :src="avatar" />
         </figure>
       </div>
     </div>
@@ -55,7 +57,14 @@ import userService from "@/core/service/user.service";
     }
   },
   methods: {
-    
+    logout() {
+      const logout: boolean = confirm("Deseja fazer logout?");
+      if (logout) {
+        localStorage.removeItem('user');
+        localStorage.removeItem('vuex');
+         this.$router.go(0);
+      }
+    }
   }
 })
 export default class Header extends Vue {}

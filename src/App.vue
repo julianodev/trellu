@@ -16,22 +16,28 @@ import userService from "@/core/service/user.service";
   methods: {
     redirect(): void {
       this.$router.go(0);
+    },
+    async getData() {
+      const vm = this as any;
+
+      if (!userService.hasUser) {
+        try {
+          const username = prompt(vm.title);
+          if (username != null) {
+            await userService.getUserAsync(username);
+            vm.redirect();
+          } else {
+            vm.getData();
+          }
+        } catch (exception) {
+          vm.redirect();
+        }
+      }
     }
   },
   async created() {
     const vm = this as any;
-
-    if (!userService.hasUser) {
-      try {
-        const username = prompt(vm.title);
-        if (username != null) {
-          await userService.getUserAsync(username);
-          vm.redirect();
-        }
-      } catch (exception) {
-        vm.redirect();
-      }
-    }
+    vm.getData();
   }
 })
 export default class App extends Vue {}

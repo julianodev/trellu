@@ -38,7 +38,7 @@
         </section>
       </Draggable>
       <div class="add-list-container">
-        <add-list placeholder="Adicionar outra lista" @enter="onAddList" />
+        <add-list :placeholder="placeHolderLists" @enter="onAddList" />
       </div>
     </Container>
   </div>
@@ -81,37 +81,25 @@ import {
     lists() {
       const vm = this as any;
       return vm.$store.state.board.lists;
+    },
+    placeHolderLists(): string {
+      return this.lists.length == 0
+        ? "Adicionar nova lista"
+        : "Adicionar outra lista";
     }
   },
   methods: {
     onAddList({ text }: any) {
       const vm = this as any;
       vm.$store.commit(ADD_LIST, { title: text || "" });
-      // vm.$nextTick(() => {
-      //   const lists = vm.$refs.list as any;
-      //   lists[lists.length - 1].querySelector("input").focus();
-      // });
     },
     onAddItem(listId: string) {
       const vm = this as any;
       vm.addItem(listId, "New item", "", "");
     },
-
-    onAddFullItem(item: any) {
-      const vm = this as any;
-      item.id
-        ? vm.$store.commit(UPDATE_ITEM, { itemId: item.id, ...item })
-        : vm.addItem(vm.activeListId, item.title, item.description, item.date);
-      vm.hideModal();
-    },
-
     addItem(listId: any, title: any, description: any, date: any) {
       const vm = this as any;
       vm.$store.commit(ADD_ITEM, { listId, title, description, date });
-    },
-    editItem(item: any) {
-      const vm = this as any;
-      vm.showModal(item);
     },
     onListDrop: makeDropHandler("onListDropComplete"),
     onListDropComplete: function(src: any, trg: any) {
@@ -127,29 +115,6 @@ import {
         trg.params[1],
         trg.index
       ]);
-    },
-
-    showModal(item: any) {
-      const vm = this as any;
-      vm.modal = true;
-      vm.$nextTick(() => {
-        vm.$refs.form.show(item);
-      });
-    },
-
-    hideModal() {
-      const vm = this as any;
-      vm.focusInput(vm.activeListId);
-      vm.modal = false;
-    },
-
-    focusInput(listId: any) {
-      const vm = this as any;
-
-      const index = vm.lists.findIndex((list: any) => list.id === listId);
-      if (index > -1) {
-        vm.$refs.list[index].querySelector("input").focus();
-      }
     }
   }
 })
