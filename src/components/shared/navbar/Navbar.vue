@@ -3,7 +3,7 @@
     <div class="navbar-menu">
       <div class="navbar-start" style="margin-top:5px">
         <!-- navbar items -->
-        <label for="Lucas Juliano" class="lbl-titulo-board">{{title}}</label>
+        <label for="Lucas Juliano" class="lbl-titulo-board">{{name}}</label>
 
         <app-button-icon style="margin-left:5px" label icon="far fa-star" />
 
@@ -15,10 +15,7 @@
         <app-button-icon label="Particular" icon="fas fa-lock" />
 
         <figure class="image is-32x32" style="margin-top:5px;margin-right:5px">
-          <img
-            class="is-rounded"
-            :src="avatar"
-          />
+          <img class="is-rounded" :src="avatar" />
         </figure>
 
         <app-button-icon label="Convidar" />
@@ -36,17 +33,17 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import userService from "@/core/service/user.service";
-import { RESET_BOARD } from '../../../store/action-types';
+import { RESET_BOARD } from "@/store/board/action-types";
 
 @Component({
   name: "Navbar",
   props: {},
   computed: {
-    title(): string {
-      return userService.name;
+    name(): string {
+      return this.$store.getters.name;
     },
-    avatar(){
-      return userService.avatar;
+    avatar() {
+      return this.$store.getters.avatar;
     }
   },
   methods: {

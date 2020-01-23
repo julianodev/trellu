@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import persistedState from 'vuex-persistedstate';
-import board from '@/store/board';
+import board from '@/store/board/board';
+import user from '@/store/user/user';
 
 Vue.use(Vuex);
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    board
+    board,
+    user
   },
 });

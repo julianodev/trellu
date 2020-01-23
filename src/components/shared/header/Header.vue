@@ -2,8 +2,6 @@
   <div>
     <div class="navbar-menu" style="background:#0067A3">
       <div class="navbar-start">
-        <!-- navbar items -->
-
         <app-button-icon icon="fas fa-home" style="margin-left:5px" />
         <app-button-icon icon="fab fa-trello" label="Quadros" />
 
@@ -53,14 +51,13 @@ import userService from "@/core/service/user.service";
   name: "Header",
   computed: {
     avatar() {
-      return userService.avatar;
+      return this.$store.getters.avatar;
     }
   },
   methods: {
     logout() {
       const logout: boolean = confirm("Deseja fazer logout?");
       if (logout) {
-        localStorage.removeItem('user');
         localStorage.removeItem('vuex');
          this.$router.go(0);
       }

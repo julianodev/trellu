@@ -36,7 +36,7 @@
     "tests/**/*.ts",
     "tests/**/*.tsx",
     "src/core/utils/plugins.js",
-    "src/store/board.ts"
+    "src/store/board/board.ts"
   ],
   "exclude": [
     "node_modules"

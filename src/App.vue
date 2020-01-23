@@ -7,37 +7,27 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import userService from "@/core/service/user.service";
+import { GET_INFO_USER_REQUEST } from "./store/user/user.action-types";
 
-@Component({
+@Component<any>({
   name: "App",
-  data: () => ({
-    title: "Por favor, informe o seu usuário do github"
-  }),
+  data: () => ({}),
   methods: {
-    redirect(): void {
+    reload() {
       this.$router.go(0);
-    },
-    async getData() {
-      const vm = this as any;
-
-      if (!userService.hasUser) {
-        try {
-          const username = prompt(vm.title);
-          if (username != null) {
-            await userService.getUserAsync(username);
-            vm.redirect();
-          } else {
-            vm.getData();
-          }
-        } catch (exception) {
-          vm.redirect();
-        }
-      }
     }
   },
-  async created() {
-    const vm = this as any;
-    vm.getData();
+  created() {
+    if (!this.$store.getters.hasUser) {
+      const username = prompt("Por favor, informe o seu usuário do github");
+      if (username) {
+        this.$store
+          .dispatch(GET_INFO_USER_REQUEST, { name: username })
+          .catch((error: any) => this.reload());
+      } else {
+        this.reload();
+      }
+    }
   }
 })
 export default class App extends Vue {}

@@ -56,7 +56,7 @@ import {
   ADD_ITEM,
   MOVE_LIST,
   MOVE_ITEM
-} from "../../store/action-types";
+} from "../../store/board/action-types";
 
 @Component<any>({
   name: "List",

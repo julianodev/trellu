@@ -22,9 +22,7 @@ class UserService {
     private baseResource: string = `https://api.github.com/`;
 
     constructor() {
-       if(this.hasUser){
-           this.user = JSON.parse(localStorage.getItem("user") as string);
-       }
+     
     }
 
     getUserAsync(username: string) {
@@ -33,29 +31,10 @@ class UserService {
         return new Promise<IUser>((resolve, reject) => {
             httpClient.get<IUser>(apiUrl)
                 .then(({ data }) => {
-                    this.saveUser(data);
                     resolve(data);
                 })
                 .catch(error => reject(error));
         });
-    }
-
-
-
-    private saveUser(user: IUser) {
-        localStorage.setItem('user', JSON.stringify(user));
-    }
-
-    get avatar(): string {
-        return this.user.avatar_url;
-    }
-
-    get name(): string {
-        return this.user.name;
-    }
-
-    get hasUser() {
-        return localStorage.getItem('user') !== null;
     }
 }
 
