@@ -1,3 +1,10 @@
+# Clonando o Trello Com VueJS
+
+
+Você pode visualizar o artigo clicando aqui : [Clonando Trello Com Vuejs](https://medium.com/@julianodev/clonando-o-trello-com-vuejs-866afd5be428) 
+
+![GitHub Logo](https://cdn-images-1.medium.com/max/800/1*YwXrdtVKLmHl_fGgWOl23A.png)
+
 # trellu
 
 ## Project setup
