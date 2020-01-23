@@ -13,12 +13,6 @@ interface IUser {
 }
 
 class UserService {
-
-    user: IUser = {
-        avatar_url: '',
-        name: ''
-    };
-
     private baseResource: string = `https://api.github.com/`;
 
     constructor() {
